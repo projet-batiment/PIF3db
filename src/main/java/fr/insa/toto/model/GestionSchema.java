@@ -20,13 +20,8 @@ package fr.insa.toto.model;
 
 import fr.insa.beuvron.utils.database.ConnectionSimpleSGBD;
 import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.sql.Time;
-import java.time.LocalTime;
 
 /**
  *
@@ -46,7 +41,8 @@ public class GestionSchema {
             st.executeUpdate("create table utilisateur ( "
                     + " id integer not null primary key, "
                     + " surnom varchar(30) not null unique,"
-                    + " pass varchar(20)  "
+                    + " pass varchar(20) "
+                    + ") "
             );
         }
     }
@@ -59,7 +55,7 @@ public class GestionSchema {
     public static void deleteSchema(Connection con) throws SQLException {
         try (Statement st = con.createStatement()) {
             try {
-                st.executeUpdate("drop table user");
+                st.executeUpdate("drop table utilisateur");
             } catch (SQLException ex) {
             }
         }

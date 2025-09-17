@@ -1,4 +1,4 @@
-package com.example;
+package fr.insa.toto.webui;
 
 import com.vaadin.flow.component.page.AppShellConfigurator;
 import com.vaadin.flow.theme.Theme;

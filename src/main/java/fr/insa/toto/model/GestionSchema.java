@@ -46,7 +46,8 @@ public class GestionSchema {
             st.executeUpdate("create table utilisateur ( "
                     + " id integer not null primary key, "
                     + " surnom varchar(30) not null unique,"
-                    + " pass varchar(20)  "
+                    + " pass varchar(20) "
+                    + ")  "
             );
         }
     }

@@ -57,7 +57,7 @@ public class MainConsole {
                 int j = 1;
                 if (rep == j++) {
                     GestionSchema.razBdd(con);
-                    BdDTest.createBdDTestV1(con);
+                    BdDTest.createBdDTestV2(con);
                 } else if (rep == j++) {
                     String ordre = ConsoleFdB.entreeString("ordre SQL : ");
                     try (PreparedStatement pst = con.prepareStatement(ordre)) {

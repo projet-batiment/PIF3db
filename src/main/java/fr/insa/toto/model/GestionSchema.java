@@ -39,7 +39,7 @@ public class GestionSchema {
         try (Statement st = con.createStatement()) {
             // creation des tables
             st.executeUpdate("create table utilisateur ( "
-                    + " id integer not null primary key, "
+                    + ConnectionSimpleSGBD.sqlForGeneratedKeys(con, "id") + ","
                     + " surnom varchar(30) not null unique,"
                     + " pass varchar(20) "
                     + ") "

@@ -15,7 +15,7 @@ import java.sql.SQLException;
  */
 public class BdDTest {
 
-    public static void createBdDTest(Connection con) throws SQLException {
+    public static void createBdDTestV1(Connection con) throws SQLException {
         try (PreparedStatement pst = con.prepareStatement("insert into utilisateur (id,surnom) values (?,?)")) {
             pst.setInt(1, 1);
             pst.setString(2, "toto");
@@ -29,7 +29,7 @@ public class BdDTest {
     public static void main(String[] args) {
         try (Connection con = ConnectionSimpleSGBD.defaultCon()) {
             GestionSchema.razBdd(con);
-            createBdDTest(con);
+            createBdDTestV1(con);
         } catch (SQLException ex) {
             throw new Error(ex);
         }

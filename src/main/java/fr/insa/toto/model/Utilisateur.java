@@ -18,22 +18,24 @@ public class Utilisateur extends ClasseMiroir {
 
     private String surnom;
     private String pass;
+    private int role;
 
-    public Utilisateur(String surnom, String pass) {
+    public Utilisateur(String surnom, String pass,int role) {
         this.surnom = surnom;
         this.pass = pass;
+        this.role = role;
     }
 
     @Override
     public Statement saveSansId(Connection con) throws SQLException {
         PreparedStatement insert = con.prepareStatement(
-                "insert into utilisateur (surnom,pass) values (?,?)",
+                "insert into utilisateur (surnom,pass,role) values (?,?,?)",
                 PreparedStatement.RETURN_GENERATED_KEYS);
         insert.setString(1, this.getSurnom());
         insert.setString(2, this.getPass());
+        insert.setInt(3, role);
         insert.executeUpdate();
         return insert;
-
     }
 
     /**

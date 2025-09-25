@@ -54,6 +54,7 @@ public class BdDTest {
             for (int[] a : apprecient) {
                 app.setInt(1, users.get(a[0]).getId());
                 app.setInt(2, users.get(a[1]).getId());
+                app.executeUpdate();
             }
         }
         int[][] pratiques = new int[][]{
@@ -67,6 +68,7 @@ public class BdDTest {
                 pra.setInt(1, users.get(p[0]).getId());
                 pra.setInt(2, loisirs.get(p[1]).getId());
                 pra.setInt(3, p[2]);
+                pra.executeUpdate();
             }
         }
     }

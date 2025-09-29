@@ -18,6 +18,7 @@
         <version>3.5.5</version>
         <relativePath/>
     </parent>
+
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -39,13 +40,19 @@
         </dependency>
         
         <!-- pour H2 sgbd inutile car déjà inclu dans le pom de vaadin-->
-<!--         https://mvnrepository.com/artifact/com.h2database/h2 
+        <!--         https://mvnrepository.com/artifact/com.h2database/h2 
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <scope>test</scope>
         </dependency>-->
 
+        <!-- trouve sur https://docs.spring.io/spring-boot/reference/using/devtools.html pour automatic reload -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional>
+        </dependency>
         <dependency>
             <groupId>com.vaadin</groupId>
             <artifactId>vaadin-spring-boot-starter</artifactId>

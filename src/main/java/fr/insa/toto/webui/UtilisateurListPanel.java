@@ -25,9 +25,10 @@ public class UtilisateurListPanel extends VerticalLayout {
         try (Connection con = ConnectionPool.getConnection(); PreparedStatement pst1 = con.prepareStatement(
                 "select surnom, ("
                 + "  select count(*) from apprecie where apprecie.u2 = utilisateur.id"
-                + ") as appreciePar"
-                + "  from utilisateur"
-//                "select * from apprecie"
+                + ") as \"apprecie par\""
+                + "  from utilisateur "
+                + "  order by \"apprecie par\" desc"
+        //                "select * from apprecie"
         )) {
             this.add(new Paragraph("Les utilisateurs"));
             this.add(new ResultSetGrid(pst1));

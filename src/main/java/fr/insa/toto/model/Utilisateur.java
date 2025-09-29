@@ -7,8 +7,11 @@ package fr.insa.toto.model;
 import fr.insa.beuvron.utils.database.ClasseMiroir;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -20,7 +23,17 @@ public class Utilisateur extends ClasseMiroir {
     private String pass;
     private int role;
 
+    /** pour nouvel utilisateur en mémoire */
     public Utilisateur(String surnom, String pass,int role) {
+        super();
+        this.surnom = surnom;
+        this.pass = pass;
+        this.role = role;
+    }
+
+    /** pour utilisateur récupéré de la base de données */
+    public Utilisateur(int id,String surnom, String pass,int role) {
+        super(id);
         this.surnom = surnom;
         this.pass = pass;
         this.role = role;
@@ -36,6 +49,19 @@ public class Utilisateur extends ClasseMiroir {
         insert.setInt(3, role);
         insert.executeUpdate();
         return insert;
+    }
+    
+    public static List<Utilisateur> tousLesUtilisateur(Connection con) throws SQLException {
+        List<Utilisateur> res = new ArrayList<>();
+        try (PreparedStatement pst = con.prepareStatement("select id,surnom,pass,role from utilisateur")) {
+            try (ResultSet allU = pst.executeQuery()) {
+                while (allU.next()) {
+                    res.add(new Utilisateur(allU.getInt("id"), allU.getString("surnom"),
+                            allU.getString("pass"),allU.getInt("role")));
+                }
+            }
+        }
+        return res;
     }
 
     /**

@@ -99,7 +99,7 @@ public abstract class ClasseMiroir {
      * @param con
      * @return 
      */
-    public abstract Statement saveSansId(Connection con) throws SQLException;
+    protected abstract Statement saveSansId(Connection con) throws SQLException;
     
     /**
      * Sauvegarde une nouvelle entité et retourne la clé affecté automatiquement

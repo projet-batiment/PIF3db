@@ -6,7 +6,7 @@ package fr.insa.toto.webui;
 
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
-import com.vaadin.flow.component.html.H3;
+import com.vaadin.flow.component.html.H2;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
@@ -20,7 +20,7 @@ import com.vaadin.flow.router.Route;
 public class VuePrincipale extends VerticalLayout {
 
     public VuePrincipale() {
-        this.add(new H3("Bienvenu dans Likes"));
+        this.add(new H2("Bienvenu dans Likes"));
         Button bGoList = new Button("--> liste des utilisateurs");
         bGoList.addSingleClickListener((t) -> {
             UI.getCurrent().navigate(UtilisateurListPanel.class);

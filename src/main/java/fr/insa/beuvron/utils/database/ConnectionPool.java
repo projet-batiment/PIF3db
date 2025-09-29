@@ -50,11 +50,16 @@ public class ConnectionPool {
         config.addDataSourceProperty("cachePrepStmts", "true");
         config.addDataSourceProperty("prepStmtCacheSize", "250");
         config.addDataSourceProperty("prepStmtCacheSqlLimit", "2048");
+        config.setTransactionIsolation("TRANSACTION_SERIALIZABLE");
         ds = new HikariDataSource(config);
     }
-
     // pour une BdD en utilisant le sgbd mysql pour module M3
 //    static {
+//        try {
+//            Class.forName("com.mysql.cj.jdbc.Driver");
+//        } catch (ClassNotFoundException ex) {
+//            throw new Error("driver mysql not found", ex);
+//        }
 //        config.setJdbcUrl("jdbc:mysql://92.222.25.165:3306/m3_fdebertranddeb01");
 //        config.setUsername("m3_fdebertranddeb01");
 //        config.setPassword("je le donne pas");
@@ -63,6 +68,7 @@ public class ConnectionPool {
 //        config.addDataSourceProperty("useServerPrepStmts", "true");
 //        config.addDataSourceProperty("prepStmtCacheSize", "250");
 //        config.addDataSourceProperty("prepStmtCacheSqlLimit", "2048");
+//        config.setTransactionIsolation("TRANSACTION_SERIALIZABLE");
 //        ds = new HikariDataSource(config);
 //    }
 

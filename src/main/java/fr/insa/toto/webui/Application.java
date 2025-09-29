@@ -9,10 +9,11 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
 @SpringBootApplication
 @Theme("default")
-public class Application implements AppShellConfigurator {
+public class Application extends SpringBootServletInitializer implements AppShellConfigurator {
 
     public static void main(String[] args) {
         // seulement si bdd h2 en memoire

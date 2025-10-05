@@ -16,23 +16,3 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with CoursBeuvron.  If not, see <http://www.gnu.org/licenses/>.
  */
-package fr.insa.toto.webui;
-
-import com.vaadin.flow.component.checkbox.Checkbox;
-import com.vaadin.flow.component.grid.Grid;
-import fr.insa.toto.model.Utilisateur;
-import java.util.List;
-
-/**
- *
- * @author francois
- */
-public class SelectUserGrid extends Grid<Utilisateur> {
-    
-    public SelectUserGrid(List<Utilisateur> users) {
-        this.addColumn(Utilisateur::getSurnom);
-        this.setItems(users);
-        this.setSelectionMode(Grid.SelectionMode.MULTI);
-    }
-        
-}

@@ -22,10 +22,13 @@ import fr.insa.beuvron.utils.ConsoleFdB;
 import fr.insa.beuvron.utils.database.ConnectionSimpleSGBD;
 import fr.insa.beuvron.utils.database.ResultSetUtils;
 import fr.insa.beuvron.utils.exceptions.ExceptionsUtils;
+import fr.insa.beuvron.utils.list.ListUtils;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -40,15 +43,29 @@ public class MainConsole {
             System.out.println("Menu utilisateurs");
             System.out.println("============================");
             System.out.println((i++) + ") liste des utilisateurs");
-            System.out.println((i++) + ") autre");
+            System.out.println((i++) + ") ajouter un utilisateurs");
+            System.out.println((i++) + ") supprimer des utilisateurs");
             System.out.println("0) Retour");
             rep = ConsoleFdB.entreeEntier("Votre choix : ");
             try {
                 int j = 1;
                 if (rep == j++) {
-                    System.out.println("TODO");
+                    List<Utilisateur> tous = Utilisateur.tousLesUtilisateur(con);
+                    System.out.println(tous.size() + " utilisateurs trouvés :");
+                    System.out.println(ListUtils.formatList(tous, "---- tous les utilisateurs\n",
+                            "\n", "\n", u -> u.getId() + " : " + u.getSurnom()));
                 } else if (rep == j++) {
-                    System.out.println("TODO autres");
+                    System.out.println("Nouvel utilisateur : ");
+                    Utilisateur u = Utilisateur.entreeConsole();
+                    u.saveInDB(con);
+                } else if (rep == j++) {
+                    List<Utilisateur> tous = Utilisateur.tousLesUtilisateur(con);
+                    List<Utilisateur> selected = ListUtils.selectMultiple(
+                            "selectionnez les utilisateurs à supprimer : ", tous, 
+                            u -> u.getId() + " : " + u.getSurnom());
+                    for (var u : selected) {
+                        u.deleteInDB(con);
+                    }
                 }
             } catch (Exception ex) {
                 System.out.println(ExceptionsUtils.messageEtPremiersAppelsDansPackage(ex, "fr.insa", 3));

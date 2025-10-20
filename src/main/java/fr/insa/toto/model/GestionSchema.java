@@ -43,14 +43,14 @@ public class GestionSchema {
                 st.executeUpdate("create table utilisateur ( "
                         + ConnectionSimpleSGBD.sqlForGeneratedKeys(con, "id") + ","
                         + " surnom varchar(30) not null unique,"
-                        + " pass varchar(20),"
+                        + " pass varchar(20) not null,"
                         + " role integer not null "
                         + ") "
                 );
                 st.executeUpdate("create table loisir ( "
                         + ConnectionSimpleSGBD.sqlForGeneratedKeys(con, "id") + ","
                         + " nom varchar(20) not null unique,"
-                        + " description text"
+                        + " description text not null"
                         + ") "
                 );
                 st.executeUpdate("create table pratique ( "

@@ -20,6 +20,7 @@ package fr.insa.toto.model;
 
 import fr.insa.beuvron.utils.ConsoleFdB;
 import fr.insa.beuvron.utils.database.ClasseMiroir;
+import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -27,12 +28,15 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 /**
  *
  * @author francois
  */
-public class Utilisateur extends ClasseMiroir {
+public class Utilisateur extends ClasseMiroir implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     private String surnom;
     private String pass;
@@ -65,7 +69,7 @@ public class Utilisateur extends ClasseMiroir {
                 PreparedStatement.RETURN_GENERATED_KEYS);
         insert.setString(1, this.getSurnom());
         insert.setString(2, this.getPass());
-        insert.setInt(3, role);
+        insert.setInt(3, getRole());
         insert.executeUpdate();
         return insert;
     }
@@ -81,6 +85,23 @@ public class Utilisateur extends ClasseMiroir {
             }
         }
         return res;
+    }
+
+    public static Optional<Utilisateur> findBySurnomPass(Connection con,String surnom,String pass) throws SQLException {
+        try (PreparedStatement pst = con.prepareStatement(
+                "select id,role from utilisateur where surnom = ? and pass = ?")) {
+            pst.setString(1, surnom);
+            pst.setString(2, pass);
+            ResultSet res = pst.executeQuery();
+            if (res.next()) {
+                int id = res.getInt(1);
+                int role = res.getInt(2);
+                return Optional.of(new Utilisateur(id,surnom, pass, role));
+            } else {
+                return Optional.empty();
+            }
+
+        }
     }
 
     /**
@@ -159,6 +180,20 @@ public class Utilisateur extends ClasseMiroir {
      */
     public void setPass(String pass) {
         this.pass = pass;
+    }
+
+    /**
+     * @return the role
+     */
+    public int getRole() {
+        return role;
+    }
+
+    /**
+     * @param role the role to set
+     */
+    public void setRole(int role) {
+        this.role = role;
     }
 
 }

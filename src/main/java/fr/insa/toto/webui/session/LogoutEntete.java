@@ -16,23 +16,34 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with CoursBeuvron.  If not, see <http://www.gnu.org/licenses/>.
  */
-package fr.insa.toto.webui;
+package fr.insa.toto.webui.session;
 
-import com.vaadin.flow.component.checkbox.Checkbox;
-import com.vaadin.flow.component.grid.Grid;
-import fr.insa.toto.model.Utilisateur;
-import java.util.List;
+import com.vaadin.flow.component.UI;
+import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.html.H3;
+import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
+import fr.insa.toto.webui.VuePrincipale;
 
 /**
  *
  * @author francois
  */
-public class SelectUserGrid extends Grid<Utilisateur> {
-    
-    public SelectUserGrid(List<Utilisateur> users) {
-        this.addColumn(Utilisateur::getSurnom);
-        this.setItems(users);
-        this.setSelectionMode(Grid.SelectionMode.MULTI);
+public class LogoutEntete extends HorizontalLayout {
+
+    private Button logout;
+
+    public LogoutEntete() {
+        this.logout = new Button("logout");
+        this.logout.addClickListener((t) -> {
+            this.doLogout();
+        });
+        this.add(new H3("bonjour " + SessionInfo.curUser().get().getSurnom()));
+        this.add(this.logout);
     }
-        
+
+    public void doLogout() {
+        SessionInfo.logout();
+        UI.getCurrent().refreshCurrentRoute(true);
+    }
+
 }

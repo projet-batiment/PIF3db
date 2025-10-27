@@ -16,10 +16,10 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with CoursBeuvron.  If not, see <http://www.gnu.org/licenses/>.
  */
-package fr.insa.toto.webui.session;
+package fr.insa.lpe7.webui.session;
 
 import com.vaadin.flow.server.VaadinSession;
-import fr.insa.toto.model.Utilisateur;
+import fr.insa.lpe7.model.Utilisateur;
 import java.io.Serializable;
 import java.util.Optional;
 

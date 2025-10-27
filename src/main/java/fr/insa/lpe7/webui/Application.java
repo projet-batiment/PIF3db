@@ -1,10 +1,10 @@
-package fr.insa.toto.webui;
+package fr.insa.lpe7.webui;
 
 import com.vaadin.flow.component.page.AppShellConfigurator;
 import com.vaadin.flow.theme.Theme;
 import fr.insa.beuvron.utils.database.ConnectionPool;
-import fr.insa.toto.model.BdDTest;
-import fr.insa.toto.model.GestionSchema;
+import fr.insa.lpe7.model.BdDTest;
+import fr.insa.lpe7.model.GestionSchema;
 import java.sql.Connection;
 import java.sql.SQLException;
 import org.springframework.boot.SpringApplication;

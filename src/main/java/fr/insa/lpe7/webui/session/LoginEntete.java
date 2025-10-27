@@ -16,7 +16,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with CoursBeuvron.  If not, see <http://www.gnu.org/licenses/>.
  */
-package fr.insa.toto.webui.session;
+package fr.insa.lpe7.webui.session;
 
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
@@ -25,8 +25,8 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.textfield.PasswordField;
 import com.vaadin.flow.component.textfield.TextField;
 import fr.insa.beuvron.utils.database.ConnectionPool;
-import fr.insa.toto.model.Utilisateur;
-import fr.insa.toto.webui.VuePrincipale;
+import fr.insa.lpe7.model.Utilisateur;
+import fr.insa.lpe7.webui.VuePrincipale;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Optional;

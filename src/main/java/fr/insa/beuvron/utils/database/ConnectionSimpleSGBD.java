@@ -94,9 +94,9 @@ public class ConnectionSimpleSGBD {
      */
     public static Connection mysqlServeurPourM3() throws SQLException {
         return connectMySQL("92.222.25.165", 3306,
-                "m3_fdebertranddeb01",
-                "m3_fdebertranddeb01",
-                "je ne le donne pas");
+                "m3_epoletti01",
+                "m3_epoletti01",
+                "6f46222e");
     }
 
     /**
